@@ -16,3 +16,10 @@ oscSecret=MYSECRETKEY
 ```bash
 ./curl_7.68_osc_icu.sh ReadConsumptionAccount payload_read_consumption_account.json | jq
 ```
+
+### Curl version >= 7.75
+
+````bash
+./curl_7.75_osc_icu.sh ReadConsumptionAccount payload_read_consumption_account.json | jq
+```
+
