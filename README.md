@@ -4,6 +4,15 @@ From the version 7.75, curl supports the aws signature v4.
 
 ## How to use
 
+**OSC.ReadAccessKeys example:**
+
+```bash
+curl -XPOST \
+  -H "X-Osc-Date: `TZ=GMT date "+%Y%m%dT%H%M%SZ"`" \
+  -H "Authorization: Basic $(echo -n "MYLOGIN:MYPASSWORD" | base64)" \
+  https://api.eu-west-2.outscale.com/api/v1/ReadAccessKeys
+```
+
 **ICU.ReadConsumptionAccount example:**
 
 ```bash
