@@ -36,15 +36,22 @@ oscKey=MYACCESSKEY
 oscSecret=MYSECRETKEY
 ```
 
-### ICU
-
 ### Curl version < 7.75
 
+#### ICU
 ```bash
 ./curl_7.68_osc_icu.sh ReadConsumptionAccount payload_read_consumption_account.json | jq
 ```
 
 ### Curl version >= 7.75
+
+#### FCU
+
+```bash
+./curl_7.75_osc_fcu.sh DescribeInstances query_describe_instance.txt | xmllint --format -
+```
+
+#### ICU
 
 ```bash
 ./curl_7.75_osc_icu.sh ReadConsumptionAccount payload_read_consumption_account.json | jq

@@ -15,7 +15,7 @@ if [ $# = 2 ]; then
     exit 1
   fi
 fi
-#echo "DEBUG: request_payload (${#request_payload}) : ${request_payload}"
+#>&2 echo "DEBUG: request_payload (${#request_payload}) : ${request_payload}"
 
 action=$1
 region="eu-west-2"
@@ -36,7 +36,7 @@ x-amz-date:${dateValue2}
 
 content-type;host;x-amz-date
 ${request_payload_sha256}" )
-# echo "DEBUG: canonical request: ${canonical_request}"
+#>&2 echo "DEBUG: canonical request: ${canonical_request}"
 
 #------------------------------------
 # Step 2 - Create string to sign.
@@ -46,7 +46,7 @@ stringToSign=$( printf "AWS4-HMAC-SHA256
 ${dateValue2}
 ${dateValue1}/${region}/icu/aws4_request
 ${canonical_request_sha256}" )
-# echo "DEBUG: stringToSign: ${stringToSign}"
+#>&2 echo "DEBUG: stringToSign: ${stringToSign}"
 
 #------------------------------------
 # Step 3 - Calculate signature.
@@ -57,7 +57,7 @@ kRegion=$(   printf "${region}"        | openssl dgst -binary -sha256 -mac HMAC 
 kService=$(  printf "${service}"       | openssl dgst -binary -sha256 -mac HMAC -macopt hexkey:${kRegion}       | xxd -p -c 256 )
 kSigning=$(  printf "aws4_request"     | openssl dgst -binary -sha256 -mac HMAC -macopt hexkey:${kService}      | xxd -p -c 256 )
 signature=$( printf "${stringToSign}"  | openssl dgst -binary -hex -sha256 -mac HMAC -macopt hexkey:${kSigning} | sed 's/^.* //' )
-# echo "DEBUG: signature: ${signature}"
+#>&2 echo "DEBUG: signature: ${signature}"
 
 #------------------------------------
 # Step 4 - Add signature to request.
