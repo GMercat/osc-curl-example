@@ -16,12 +16,12 @@ curl -XPOST \
 **ICU.ReadConsumptionAccount example:**
 
 ```bash
-curl --aws-sigv4 'aws:amz' \
-  -u 'MYACCESSKEY:MYSECRETKEY' \ 
-  -H 'Content-Type: application/x-amz-json-1.1' \
-  -H 'x-amz-target:TinaIcuService.ReadConsumptionAccount' \
-  -d '@payload_read_consumption_account.json'
-  https://icu.eu-west-2.outscale.com 
+curl --aws-sigv4 "aws" \
+  -u "MYACCESSKEY:MYSECRETKEY" \
+  -H "Content-Type: application/x-amz-json-1.1" \
+  -H "x-amz-target:TinaIcuService.ReadConsumptionAccount" \
+  -d "@payload_read_consumption_account.json" \
+  https://icu.eu-west-2.outscale.com
 ```
 
 ## Scripts
