@@ -20,6 +20,7 @@ curl --aws-sigv4 "aws" \
   -u "MYACCESSKEY:MYSECRETKEY" \
   -H "Content-Type: application/x-amz-json-1.1" \
   -H "x-amz-target:TinaIcuService.ReadConsumptionAccount" \
+  -H "x-amz-date: `TZ=GMT date "+%Y%m%dT%H%M%SZ"`" \
   -d "@payload_read_consumption_account.json" \
   https://icu.eu-west-2.outscale.com
 ```
