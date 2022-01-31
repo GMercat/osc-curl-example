@@ -9,7 +9,7 @@ From the version 7.75, curl supports the aws signature v4.
 ```bash
 curl -XPOST \
   -H "X-Osc-Date: `TZ=GMT date "+%Y%m%dT%H%M%SZ"`" \
-  -H "Authorization: Basic $(echo -n "MYLOGIN:MYPASSWORD" | base64)" \
+  -H "Authorization: Basic `echo -n "MYLOGIN:MYPASSWORD" | base64`" \
   https://api.eu-west-2.outscale.com/api/v1/ReadAccessKeys
 ```
 
